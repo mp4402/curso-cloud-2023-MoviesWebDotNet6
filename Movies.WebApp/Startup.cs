@@ -31,8 +31,8 @@ namespace Movies.WebApp
             services.AddScoped<IMovieRepository, MovieRepository>();
             var connectionString = Configuration.GetConnectionString("DbConnection") ?? Configuration.GetValue<string>("ConnectionStrings:DbConnection");
             services.AddDbContext<ApplicationDbContext>(
-                //options => options.UseSqlite(connectionString)
-                options => options.UseSqlServer(connectionString)
+                options => options.UseSqlite(connectionString)
+                //options => options.UseSqlServer(connectionString)
                 );
             services.AddControllersWithViews();
         }

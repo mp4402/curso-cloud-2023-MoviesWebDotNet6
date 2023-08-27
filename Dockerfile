@@ -14,8 +14,9 @@ RUN dotnet publish -c Release -o /publish
 #Stage 3: Run app
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 ENV ASPNETCORE_ENVIRONMENT=Development
-ENV ConnectionStrings__
+ENV ConnectionStrings__DbConnection="Data Source=Movies.db"
 WORKDIR /Movies.WebApp
 COPY --from=publish /publish .
+COPY Movies.db .
 EXPOSE 80
 ENTRYPOINT ["./Movies.WebApp"]
